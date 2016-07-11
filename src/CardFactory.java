@@ -7,12 +7,11 @@ import java.util.Scanner;
 /**
  * Created by ChikeUdenze on 7/10/16.
  */
+
 public class CardFactory {
 
 
-    /**
-     * Created by ChikeUdenze on 7/10/16.
-     */
+
 
 
 
