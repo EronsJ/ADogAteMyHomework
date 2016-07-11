@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class CardFactory {
 
-    public CardSuite convertStringToSuite(char suiteString){
+    private static CardSuite convertStringToSuite(char suiteString){
         switch(suiteString){
             case '+':
                 return CardSuite.CROSS;
@@ -25,7 +25,7 @@ public class CardFactory {
             default: throw new IllegalArgumentException("Wrong character in file");
         }
     }
-    public ArrayList<Card> createDeck(String filename) throws IOException {
+    public static ArrayList<Card> createDeck(String filename) throws IOException {
         ArrayList<Card> deck = new ArrayList<>();
 
 
@@ -38,16 +38,9 @@ public class CardFactory {
             line = numScan.nextLine();
             Card CurrCard= new Card(Integer.parseInt(""+line.charAt(0)),convertStringToSuite(line.charAt(1)));
             deck.add(CurrCard);
-
-
-
         }
         return deck;
     }
-    public String toString(){
-        return("");
-    }
-
 
     public static void main(String [] args) throws IOException{
         CardFactory D= new CardFactory();
