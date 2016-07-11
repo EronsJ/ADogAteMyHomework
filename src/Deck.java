@@ -39,7 +39,7 @@ public class Deck {
     }
 
     public Card drawRandomCard(){
-        int index =  drawRandomIndex();
+        int index =  randomIndex();
 
         return this.cards.remove(index);
     }
@@ -49,7 +49,7 @@ public class Deck {
         List<Card> cards = new ArrayList<>();
 
         for(int i = 0; i < count; i++){
-            index = drawRandomIndex();
+            index = randomIndex();
 
             cards.add(this.cards.remove(index));
         }
@@ -77,7 +77,7 @@ public class Deck {
         return cards.toString();
     }
 
-    private int drawRandomIndex(){
+    private int randomIndex(){
         return this.random.nextInt(this.cards.size());
     }
 
