@@ -54,7 +54,7 @@ public class CardFactory {
 
         String line;
 
-        while (numScan.hasNext()) {
+        while (numScan.hasNextLine()) {
             line = numScan.nextLine();
             int cardNumber=Integer.parseInt(""+line.charAt(0));
             CardSuite cardSuite= convertStringToSuite(line.charAt(1));
@@ -62,9 +62,6 @@ public class CardFactory {
             Card CurrCard= new Card(cardNumber,cardSuite);
             deck.add(CurrCard);
             CurrCard.setActionType(convertNumToActionType(cardNumber));
-
-
-
         }
         return deck;
     }
