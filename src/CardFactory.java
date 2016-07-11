@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Created by ChikeUdenze on 7/10/16.
- */
+
 
 public class CardFactory {
 
