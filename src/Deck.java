@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -15,32 +16,40 @@ public class Deck {
         this.random = new Random();
     }
 
-    public Card getCard(int index){
+    public Card drawCard(int index){
         return this.cards.remove(index);
     }
 
-    public Deck getCards(int[] indices){
+    public Deck drawCards(int[] indices){
         List<Card> cards = new ArrayList<>();
+        int numRemoved = 0;
 
         for(int index: indices){
-            cards.add(this.cards.remove(index));
+            cards.add(this.cards.get(index));
+        }
+
+        Arrays.sort(indices);
+
+        for(int index: indices){
+            this.cards.remove(index - numRemoved);
+            numRemoved++;
         }
 
         return new Deck(cards);
     }
 
-    public Card getRandomCard(){
-        int index =  getRandomIndex();
+    public Card drawRandomCard(){
+        int index =  drawRandomIndex();
 
         return this.cards.remove(index);
     }
 
-    public Deck getRandomCards(int count){
+    public Deck drawRandomCards(int count){
         int index;
         List<Card> cards = new ArrayList<>();
 
         for(int i = 0; i < count; i++){
-            index = getRandomIndex();
+            index = drawRandomIndex();
 
             cards.add(this.cards.remove(index));
         }
@@ -56,19 +65,74 @@ public class Deck {
         this.cards.add(card);
     }
 
-    public void addCards(List<Card> cards){
-        cards.forEach(card -> {
-            this.cards.add(card);
-        });
-    }
-
     public void addCards(Deck cards){
-        for(int i = 0; i < cards.size(); i++){
-            this.cards.add(cards.getCard(i));
+        int size = cards.size();
+
+        for(int i = 0; i < size; i++){
+            this.cards.add(cards.drawCard(0));
         }
     }
 
-    private int getRandomIndex(){
+    public String toString(){
+        return cards.toString();
+    }
+
+    private int drawRandomIndex(){
         return this.random.nextInt(this.cards.size());
+    }
+
+    private static void printLine(){
+        System.out.println("_______________________________________________" +
+                "_______________________________________________________" +
+                "___________________________________________");
+    }
+
+    private static void print(Object o){
+        System.out.println(o);
+    }
+
+    public static void main(String[] args) {
+        try {
+            print("Creating Deck...");
+            Deck testDeck = new Deck(CardFactory.createDeck("cards.txt"));
+            print("Deck: " + testDeck);
+            printLine();
+
+            print("Adding '2 Circle' to deck...");
+            testDeck.addCard(new Card(2, CardSuite.CIRCLE, ActionCardType.PICK2));
+            print("Deck: " + testDeck);
+            printLine();
+
+            print("Drawing the Card at index 1: '5 Star'...");
+            print("Card: " + testDeck.drawCard(1));
+            print("Deck: " + testDeck);
+            printLine();
+
+
+            print("Drawing cards at index 2, 0, 4: '4 Square, 1 Cross, 2 Circle'...");
+            int[] cardIndices = {2, 0, 4};
+            Deck drawnCards = testDeck.drawCards(cardIndices);
+            print("Drawn Cards: " + drawnCards);
+            print("Deck: " + testDeck);
+            printLine();
+
+            print("Adding the drawn cards back to the deck...");
+            testDeck.addCards(drawnCards);
+            print("Deck: " + testDeck);
+            printLine();
+
+            print("Drawing random card...");
+            print("Card: " + testDeck.drawRandomCard());
+            print("Deck: " + testDeck);
+            printLine();
+
+            print("Drawing 2 random cards...");
+            print("Cards: " + testDeck.drawRandomCards(2));
+            print("Deck: " + testDeck);
+            printLine();
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
