@@ -19,7 +19,9 @@
             this.actionType = actionType;
         }
 
-
+        public int getCountVal(){
+            return shape == CardSuite.STAR ? 2 * number: number;
+        }
         public int getNumber() {
             return number;
         }
@@ -34,7 +36,7 @@
 
         @Override
         public String toString() {
-            return ("("+this.number+this.shape+this.actionType+")");
+            return ("("+this.number+", "+this.shape+", "+this.actionType+")");
         }
     }
 

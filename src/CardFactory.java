@@ -13,7 +13,26 @@ public class CardFactory {
 
 
 
+        public ActionCardType convertNumToActionType(int cardNum){
+            switch(cardNum){
+                case 1:
+                    return ActionCardType.HOLDON;
+                case 2:
+                    return ActionCardType.PICK2;
+                case 5:
+                    return ActionCardType.PICK3;
+                case 8:
+                    return ActionCardType.SUSPENSION;
+                case 14:
+                    return ActionCardType.GENERALMARKET;
+                case 20:
+                    return ActionCardType.WHOT;
+                default:
+                    return ActionCardType.NOACTION;
+            }
 
+
+        }
         public CardSuite convertStringToSuite(char suiteString){
             switch(suiteString){
                 case '+':
@@ -42,8 +61,12 @@ public class CardFactory {
 
             while (numScan.hasNext()) {
                 line = numScan.nextLine();
-                Card CurrCard= new Card(Integer.parseInt(""+line.charAt(0)),convertStringToSuite(line.charAt(1)));
+                int cardNumber=Integer.parseInt(""+line.charAt(0));
+                CardSuite cardSuite= convertStringToSuite(line.charAt(1));
+
+                Card CurrCard= new Card(cardNumber,cardSuite);
                 deck.add(CurrCard);
+                CurrCard.setActionType(convertNumToActionType(cardNumber));
 
 
 
