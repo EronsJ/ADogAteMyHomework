@@ -2,6 +2,9 @@
  * Created by ChikeUdenze on 7/10/16.
  */
 
+/**
+ * cLASS TO REPRESENT EACH CARD. CONSISTS OF TWO FIELDS, THE NUMBER AND THE SHAPE
+ */
     public class Card{
         int number;
         CardSuite shape;
