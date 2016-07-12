@@ -3,7 +3,9 @@
  */
 
 /**
- * cLASS TO REPRESENT EACH CARD. CONSISTS OF TWO FIELDS, THE NUMBER AND THE SHAPE
+ * @author King David
+ * @author Chike Udenze
+ * CLASS TO REPRESENT EACH CARD. CONSISTS OF TWO FIELDS, THE NUMBER AND THE SHAPE
  */
 public class Card{
     private int number;
