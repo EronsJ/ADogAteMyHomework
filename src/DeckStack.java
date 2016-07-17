@@ -26,4 +26,8 @@ public class DeckStack {
     public Card getTop() {
         return top;
     }
+
+    public Card getBottomCard() {
+        return null;
+    }
 }
