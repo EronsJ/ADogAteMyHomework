@@ -16,6 +16,10 @@ public class Deck {
         this.random = new Random();
     }
 
+    public Card drawCard(){
+        return drawCard(this.cards.size() - 1);
+    }
+
     public Card drawCard(int index){
         return this.cards.remove(index);
     }
@@ -57,6 +61,18 @@ public class Deck {
         return new Deck(cards);
     }
 
+    public Card flipTop(){
+        return this.cards.get(size() - 1);
+    }
+
+    public Card flipBottom(){
+        return this.cards.get(0);
+    }
+
+    public Card flip(int index){
+        return this.cards.get(index);
+    }
+
     public int size(){
         return this.cards.size();
     }
@@ -69,7 +85,7 @@ public class Deck {
         int size = cards.size();
 
         for(int i = 0; i < size; i++){
-            this.cards.add(cards.drawCard(0));
+            this.cards.add(cards.drawCard());
         }
     }
 
@@ -118,6 +134,21 @@ public class Deck {
 
             print("Adding the drawn cards back to the deck...");
             testDeck.addCards(drawnCards);
+            print("Deck: " + testDeck);
+            printLine();
+
+            print("flipping top card: '4 Square' ...");
+            print("Top Card: " + testDeck.flipTop());
+            print("Deck: " + testDeck);
+            printLine();
+
+            print("flipping bottom card: '6 Circle' ...");
+            print("Bottom Card: " + testDeck.flipBottom());
+            print("Deck: " + testDeck);
+            printLine();
+
+            print("flipping card at index 3: '1 Cross' ...");
+            print("Card: " + testDeck.flip(3));
             print("Deck: " + testDeck);
             printLine();
 
