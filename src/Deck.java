@@ -9,11 +9,14 @@ import java.util.Random;
  */
 public class Deck {
     private List<Card> cards;
-    private Random random;
+    private Random random = new Random();
+
+    public Deck(){
+        this.cards = new ArrayList<>();
+    }
 
     public Deck(List<Card> cards){
         this.cards = cards;
-        this.random = new Random();
     }
 
     public Card drawCard(){

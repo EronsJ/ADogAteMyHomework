@@ -103,7 +103,7 @@ public class PlayArea extends Observable {
 
     //Update Top of Card
     private void updateBinTop(DeckStack cardStackTop){
-        binTop.setTop(cardStackTop);
+        binTop.addCards(cardStackTop);
     }
 
     //Not an action Card so reset environment

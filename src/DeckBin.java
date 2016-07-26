@@ -2,20 +2,12 @@
 /**
  * Created by Erons J on 7/10/2016.
  */
-public class DeckBin {
-    private DeckStack top;
-    private Card cardAtTop;
-
+public class DeckBin extends Deck{
     public boolean isValidDeck(DeckStack cardStack) {
-        return false;
-    }
-
-
-    public void setTop(DeckStack top) {
-        this.top = top;
+        return this.flipTop().getNumber() == cardStack.flipBottom().getNumber();
     }
 
     public Card getCardAtTop() {
-        return cardAtTop;
+        return this.flipTop();
     }
 }

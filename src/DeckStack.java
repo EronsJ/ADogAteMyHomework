@@ -1,7 +1,7 @@
 /**
  * Created by Erons J on 7/10/2016.
  */
-public class DeckStack {
+public class DeckStack extends Deck{
     private boolean validStack;
     private Card top;
     private boolean actionStack;
